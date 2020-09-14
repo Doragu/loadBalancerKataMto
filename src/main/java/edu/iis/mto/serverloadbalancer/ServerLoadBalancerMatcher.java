@@ -18,4 +18,8 @@ public class ServerLoadBalancerMatcher extends TypeSafeMatcher<Server> {
     public void describeTo(Description description) {
         description.appendText("a server with current load of").appendValue(expectedValue);
     }
+
+    public static ServerLoadBalancerMatcher hasLoadPercentageOf(double expectedValue) {
+        return new ServerLoadBalancerMatcher(expectedValue);
+    }
 }
