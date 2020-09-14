@@ -66,7 +66,7 @@ public class ServerLoadBalancerTest {
 		balance(listOfServersWith(lessLoadedServer, moreLoadedServer), listOfVmsWith(theVm));
 
 		assertThat("less loaded server should contain the vm", lessLoadedServer.contains(theVm));
-		assertThat("more laoded server should contain the vm", moreLoadedServer.contains(theVm));
+		assertThat("more laoded server should not contain the vm", !moreLoadedServer.contains(theVm));
 	}
 
 	private Vm[] listOfVmsWith(Vm... vms) {
