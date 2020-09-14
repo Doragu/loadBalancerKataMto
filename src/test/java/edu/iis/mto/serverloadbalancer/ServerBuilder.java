@@ -2,15 +2,15 @@ package edu.iis.mto.serverloadbalancer;
 
 public class ServerBuilder implements Builder<Server>{
 
-    private int loadPercentage;
+    public int capacity;
 
-    public ServerBuilder withCapacity(int loadPercentage) {
-        this.loadPercentage = loadPercentage;
+    public ServerBuilder withCapacity(int capacity) {
+        this.capacity = capacity;
         return this;
     }
 
     public Server build() {
-        return new Server();
+        return new Server(capacity);
     }
 
     public static ServerBuilder server() {

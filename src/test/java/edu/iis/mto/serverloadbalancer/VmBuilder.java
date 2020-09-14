@@ -10,7 +10,7 @@ public class VmBuilder implements Builder<Vm>{
     }
 
     public Vm build() {
-        return new Vm();
+        return new Vm(vmSize);
     }
 
     public static VmBuilder vm() {
