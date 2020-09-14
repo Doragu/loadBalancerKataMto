@@ -20,7 +20,7 @@ public class Server {
 
     public void addVm(Vm vm) {
         vms.add(vm);
-        currentLoadBalance = vmLoadPercentage(vm) * MAXIMUM_LOAD;
+        currentLoadBalance += vmLoadPercentage(vm) * MAXIMUM_LOAD;
     }
 
     public int vmCount() {
