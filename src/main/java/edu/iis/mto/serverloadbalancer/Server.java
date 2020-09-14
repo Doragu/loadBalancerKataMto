@@ -25,7 +25,7 @@ public class Server {
 
     public void addVm(Vm vm) {
         vms.add(vm);
-        currentLoadPercentage = getVmLoadPercentage(vm) * MAXIMUM_LOAD;
+        currentLoadPercentage += getVmLoadPercentage(vm) * MAXIMUM_LOAD;
     }
 
     public int vmsCount() {
