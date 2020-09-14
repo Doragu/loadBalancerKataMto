@@ -31,4 +31,8 @@ public class Server {
     public int vmsCount() {
         return vms.size();
     }
+
+    public boolean canFit(Vm vm) {
+        return currentLoadPercentage + (double)vm.getVmSize() / capacity * MAXIMUM_LOAD <= MAXIMUM_LOAD;
+    }
 }

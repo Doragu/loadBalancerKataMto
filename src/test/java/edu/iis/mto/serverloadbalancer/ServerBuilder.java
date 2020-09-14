@@ -29,7 +29,7 @@ public class ServerBuilder implements Builder<Server>{
     }
 
     public ServerBuilder withCurrentLoadOf(double loadPercentage) {
-        this.vmSize = (int)(loadPercentage * capacity);
+        this.vmSize = (int)(loadPercentage * capacity / Server.MAXIMUM_LOAD);
         return this;
     }
 }

@@ -65,7 +65,7 @@ public class ServerLoadBalancerTest {
 	public void balancingTwoServers_vmAttachedToLessLoaded() {
 		Server moreLoadedServer = a(server().withCapacity(10).withCurrentLoadOf(60.0d));
 		Server lessLoadedServer = a(server().withCapacity(10).withCurrentLoadOf(50.0d));
-		Vm theVm = a(vm().ofSize(3));
+		Vm theVm = a(vm().ofSize(1));
 
 		balance(aListOfServersWith(lessLoadedServer, moreLoadedServer), aListOfVmsWith(theVm));
 
@@ -75,7 +75,7 @@ public class ServerLoadBalancerTest {
 
 	@Test
 	public void balanceAServerWithNotEnoughRoom_ShouldNotBeFilled() {
-		Server theServer = a(server().withCapacity(10).withCurrentLoadOf(8.0d));
+		Server theServer = a(server().withCapacity(10).withCurrentLoadOf(80.0d));
 		Vm theVm = a(vm().ofSize(3));
 
 		balance(aListOfServersWith(theServer), aListOfVmsWith(theVm));
