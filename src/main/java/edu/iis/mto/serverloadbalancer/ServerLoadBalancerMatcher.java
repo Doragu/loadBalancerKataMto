@@ -5,6 +5,7 @@ import org.hamcrest.TypeSafeMatcher;
 
 public class ServerLoadBalancerMatcher extends TypeSafeMatcher<Server> {
 
+    public static final double EPSILON = 0.01d;
     private double expectedValue;
 
     public ServerLoadBalancerMatcher(double expectedValue) {
@@ -12,7 +13,11 @@ public class ServerLoadBalancerMatcher extends TypeSafeMatcher<Server> {
     }
 
     protected boolean matchesSafely(Server server) {
-        return server.currentLoadBalance == expectedValue || Math.abs(server.currentLoadBalance - expectedValue) <= 0.01d;
+        return areDoublesEqual(expectedValue, server.currentLoadBalance);
+    }
+
+    private boolean areDoublesEqual(double double1, double double2) {
+        return double1 == double2 || Math.abs(double1 - double2) <= EPSILON;
     }
 
     @Override
