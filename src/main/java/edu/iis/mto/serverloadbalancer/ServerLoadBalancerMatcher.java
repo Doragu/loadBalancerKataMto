@@ -12,7 +12,12 @@ public class ServerLoadBalancerMatcher extends TypeSafeMatcher<Server> {
     }
 
     protected boolean matchesSafely(Server server) {
-        return true;
+        return server.currentLoadBalance == expectedValue || Math.abs(server.currentLoadBalance - expectedValue) <= 0.01d;
+    }
+
+    @Override
+    protected void describeMismatchSafely(Server item, Description mismatchDescription) {
+        mismatchDescription.appendText("a server with current load of").appendValue(item.currentLoadBalance);
     }
 
     public void describeTo(Description description) {
