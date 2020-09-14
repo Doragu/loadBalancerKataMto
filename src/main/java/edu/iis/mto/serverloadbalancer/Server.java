@@ -6,8 +6,8 @@ import java.util.List;
 public class Server {
 
     public static final double MAXIMUM_LOAD = 100.0d;
-    public double currentLoadBalance;
-    public int capacity;
+    private double currentLoadBalance;
+    private int capacity;
     private List<Vm> vms = new ArrayList<Vm>();
 
     public Server(int capacity) {
@@ -33,5 +33,9 @@ public class Server {
 
     private double vmLoadPercentage(Vm vm) {
         return (double) vm.size / capacity;
+    }
+
+    public double getCurrentLoadBalance() {
+        return currentLoadBalance;
     }
 }

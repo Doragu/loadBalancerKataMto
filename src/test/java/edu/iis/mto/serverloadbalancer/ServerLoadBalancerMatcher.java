@@ -13,7 +13,7 @@ public class ServerLoadBalancerMatcher extends TypeSafeMatcher<Server> {
     }
 
     protected boolean matchesSafely(Server server) {
-        return areDoublesEqual(expectedValue, server.currentLoadBalance);
+        return areDoublesEqual(expectedValue, server.getCurrentLoadBalance());
     }
 
     private boolean areDoublesEqual(double double1, double double2) {
@@ -22,7 +22,7 @@ public class ServerLoadBalancerMatcher extends TypeSafeMatcher<Server> {
 
     @Override
     protected void describeMismatchSafely(Server item, Description mismatchDescription) {
-        mismatchDescription.appendText("a server with current load of").appendValue(item.currentLoadBalance);
+        mismatchDescription.appendText("a server with current load of").appendValue(item.getCurrentLoadBalance());
     }
 
     public void describeTo(Description description) {

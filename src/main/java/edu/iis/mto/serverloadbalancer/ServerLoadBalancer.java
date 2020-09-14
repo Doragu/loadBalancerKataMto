@@ -33,7 +33,7 @@ public class ServerLoadBalancer {
         Server lessLoadedServer = null;
 
         for (Server server : servers) {
-            if (lessLoadedServer == null || lessLoadedServer.currentLoadBalance > server.currentLoadBalance) {
+            if (lessLoadedServer == null || lessLoadedServer.getCurrentLoadBalance() > server.getCurrentLoadBalance()) {
                 lessLoadedServer = server;
             }
         }
