@@ -16,6 +16,11 @@ public class CurrentLoadPercentageMatcher extends TypeSafeMatcher<Server> {
         return areDoublesEqual(expectedPercentageLoad, server.currentLoadPercentage);
     }
 
+    @Override
+    protected void describeMismatchSafely(Server item, Description mismatchDescription) {
+        mismatchDescription.appendText("a server with load percentage of").appendValue(item.currentLoadPercentage);
+    }
+
     private boolean areDoublesEqual(double double1, double double2) {
         return double1 == double2 || Math.abs(double1 - double2) < EPSILON;
     }
